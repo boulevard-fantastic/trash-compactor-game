@@ -13,6 +13,6 @@ public class sun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        transform.localRotation = Quaternion.Euler(Time.timeSinceLevelLoad / 360 * 60 + 50,-30,0);
     }
 }
