@@ -13,6 +13,8 @@ public class block : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (transform.position.y <= -16) {
+			Destroy(gameObject);
+		}
     }
 }

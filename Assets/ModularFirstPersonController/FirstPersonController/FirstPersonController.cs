@@ -439,6 +439,9 @@ public class FirstPersonController : MonoBehaviour
         }
 
         #endregion
+		if (transform.position.y <= -16) {
+			Destroy(gameObject);
+		}
     }
 
     // Sets isGrounded based on a raycast sent straigth down from the player object
@@ -525,7 +528,10 @@ public class FirstPersonController : MonoBehaviour
             timer = 0;
             joint.localPosition = new Vector3(Mathf.Lerp(joint.localPosition.x, jointOriginalPos.x, Time.deltaTime * bobSpeed), Mathf.Lerp(joint.localPosition.y, jointOriginalPos.y, Time.deltaTime * bobSpeed), Mathf.Lerp(joint.localPosition.z, jointOriginalPos.z, Time.deltaTime * bobSpeed));
         }
+		joint.localPosition += new Vector3(Random.Range(-1,1),Random.Range(-1,1),Random.Range(-1,1)).normalized * shake * Time.deltaTime;
+		shake = Mathf.Lerp(shake,0,Time.deltaTime * Mathf.PerlinNoise(-64294,Time.timeSinceLevelLoad) * 3);
     }
+	public float shake = 0f;
 }
 
 
